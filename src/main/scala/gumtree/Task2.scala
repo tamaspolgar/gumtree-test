@@ -2,8 +2,12 @@ package gumtree
 
 object Task2 extends App with Support {
 
-  def getAnOldestPerson(addresses: List[Address]): String = {
-    addresses.minBy(_.birthDate.toEpochDay).name
+  def getAnOldestPerson(addresses: List[Address]): Option[String] = {
+    for {
+      nonEmptyAddresses <- Some(addresses).filter(_.nonEmpty)
+    } yield {
+      nonEmptyAddresses.minBy(_.birthDate.toEpochDay).name
+    }
   }
 
   def getAllOldestPeople(addresses: List[Address]): List[String] = {
