@@ -1,0 +1,8 @@
+### Intellij ###
+.idea/
+
+### Scala ###
+**/target/
+
+### Secret ###
+**/auth-api-secret.yml
